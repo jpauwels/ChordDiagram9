@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <ul>
+            {% for track in track_list %}
+            <li><a href={{url_for('get_track', name=track)}}>{{track}}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
