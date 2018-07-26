@@ -30,13 +30,23 @@ def process_track(path):
 
     return matrix
 
+def default_matrix():
+    matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
+    for i in range(len(matrix)):
+        matrix[i][i] = 1 - sum(matrix[i])
+    return matrix 
+
 @app.route("/")
 def template_test():
-    return render_template('template.html', track_list=tracks)
+    return render_template('template.html',
+                            matrix=default_matrix(),
+                            chord_map=CHORDS,
+                            track_list=tracks)
 
 @app.route("/tracks/<name>")
 def get_track(name):
-    return render_template('vis.html',
+    return render_template('template.html',
+                            track_list=tracks,
                             chord_map=CHORDS,
                             matrix=process_track(os.path.join(TRACK_DIR, name)))
 
