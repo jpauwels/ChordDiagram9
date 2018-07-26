@@ -23,6 +23,7 @@ def process_track(path):
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
     for start, end in changes:
         matrix[start][end] = 1
+        matrix[end][start] = max(0.3, matrix[end][start])
     return matrix
 
 @app.route("/")
