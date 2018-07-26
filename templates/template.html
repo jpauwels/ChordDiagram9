@@ -78,23 +78,10 @@ var svg = d3.select("body").selectAll("div")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-// Load our data file…
-//d3.csv("debt.csv", type, function(error, data) {
-//  if (error) throw error;
-
   var countryByName = d3.map(),
       countryIndex = -1,
       countryByIndex = [];
 
-  // Compute a unique index for each country.
-  /*data.forEach(function(d) {
-    if (countryByName.has(d.creditor)) d.creditor = countryByName.get(d.creditor);
-    else countryByName.set(d.creditor, d.creditor = {name: d.creditor, index: ++countryIndex});
-    if (countryByName.has(d.debtor)) d.debtor = countryByName.get(d.debtor);
-    else countryByName.set(d.debtor, d.debtor = {name: d.debtor, index: ++countryIndex});
- )   d.debtor.risk = d.risk;
-  });
-*/
   // Initialize a square matrix of debits and credits.
   for (var i = 0; i <= countryIndex; i++) {
     debits[i] = [];
@@ -105,15 +92,6 @@ var svg = d3.select("body").selectAll("div")
     }
   }
 
-  // Populate the matrices, and stash a map from index to country.
-  /*
-    data.forEach(function(d) {
-    debits[d.creditor.index][d.debtor.index] = d;
-    credits[d.debtor.index][d.creditor.index] = d;
-    countryByIndex[d.creditor.index] = d.creditor;
-    countryByIndex[d.debtor.index] = d.debtor;
-  });
-*/
   // For each diagram…
   svg.each(function(matrix, j) {
     var svg = d3.select(this);
