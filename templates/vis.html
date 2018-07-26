@@ -30,7 +30,7 @@ const matrix = {{ matrix|safe }}
 var width = 700,
     height = 700,
     outerRadius = Math.min(width, height) / 2 - 4,
-    innerRadius = outerRadius - 20;
+    innerRadius = outerRadius - 50;
 
 var format = d3.format(",.3r");
 
@@ -42,8 +42,14 @@ var debits = [],
 var layout = d3.layout.chord().padding(.05)
 // The color scale, for different categories of “worrisome” risk.
 var fill = (i) => {
-    var colors = ["#DB704D", "#D2D0C6", "#ECD08D", "#F8EDD3"]
-    var choice = i % colors.length
+    var colors = ["#c6362b",
+                  "#c69a2b",
+                  "#67c62b",
+                  "#2bc69a",
+                  "#2b90c6",
+                  "#552bc6",
+                  "#c12bc6"]
+    var choice = Math.floor(i / 12)
     return colors[choice]
 }
 
