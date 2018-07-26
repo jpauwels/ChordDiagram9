@@ -37,10 +37,6 @@ var width = 800,
 
 var format = d3.format(",.3r");
 
-// Square matrices, asynchronously loaded; credits is the transpose of debits.
-var debits = [],
-    credits = [];
-
 // The chord layout, for computing the angles of chords and groups.
 var layout = d3.layout.chord().padding(0)
 // The color scale, for different categories of “worrisome” risk.
@@ -67,7 +63,7 @@ var chord = d3.svg.chord()
 
 // Add an SVG element for each diagram, and translate the origin to the center.
 var svg = d3.select("body").selectAll("div")
-    .data([debits, credits])
+    .data([matrix, []])
   .enter().append("div")
     .style("display", "inline-block")
     .style("width", width + "px")
@@ -81,16 +77,6 @@ var svg = d3.select("body").selectAll("div")
   var countryByName = d3.map(),
       countryIndex = -1,
       countryByIndex = [];
-
-  // Initialize a square matrix of debits and credits.
-  for (var i = 0; i <= countryIndex; i++) {
-    debits[i] = [];
-    credits[i] = [];
-    for (var j = 0; j <= countryIndex; j++) {
-      debits[i][j] = 0;
-      credits[i][j] = 0;
-    }
-  }
 
   // For each diagram…
   svg.each(function(matrix, j) {
