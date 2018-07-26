@@ -32,7 +32,8 @@ def template_test():
 @app.route("/tracks/<name>")
 def get_track(name):
     return render_template('vis.html',
-                           matrix=process_track(os.path.join(TRACK_DIR, name)))
+                            chord_map=CHORDS,
+                            matrix=process_track(os.path.join(TRACK_DIR, name)))
 
 if __name__ == '__main__':
     app.run(debug=True)
