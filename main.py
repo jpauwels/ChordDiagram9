@@ -22,7 +22,7 @@ def process_track(path):
     changes = [(labels[i], labels[i+1]) for i in range(len(labels) - 1)]
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
     for start, end in changes:
-        matrix[start][end] += 1
+        matrix[start][end] = 1
     return matrix
 
 @app.route("/")
