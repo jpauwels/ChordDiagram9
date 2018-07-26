@@ -27,8 +27,8 @@ path.chord {
 const CHORDS = {{ chord_map|safe }}
 const matrix = {{ matrix|safe }}
 
-var width = 700,
-    height = 700,
+var width = 750,
+    height = 750,
     outerRadius = Math.min(width, height) / 2 - 4,
     innerRadius = outerRadius - 50;
 
@@ -39,7 +39,7 @@ var debits = [],
     credits = [];
 
 // The chord layout, for computing the angles of chords and groups.
-var layout = d3.layout.chord().padding(.05)
+var layout = d3.layout.chord().padding(0)
 // The color scale, for different categories of “worrisome” risk.
 var fill = (i) => {
     var colors = ["#c6362b",
@@ -89,7 +89,7 @@ var svg = d3.select("body").selectAll("div")
     else countryByName.set(d.creditor, d.creditor = {name: d.creditor, index: ++countryIndex});
     if (countryByName.has(d.debtor)) d.debtor = countryByName.get(d.debtor);
     else countryByName.set(d.debtor, d.debtor = {name: d.debtor, index: ++countryIndex});
-    d.debtor.risk = d.risk;
+ )   d.debtor.risk = d.risk;
   });
 */
   // Initialize a square matrix of debits and credits.
@@ -123,6 +123,7 @@ var svg = d3.select("body").selectAll("div")
         .data(layout.chords)
       .enter().append("path")
         .attr("class", "chord")
+        .filter((d) => d.source.index != d.target.index)
         .style("fill", (d) => fill(d.source.index))
         .style("stroke", (d) => d3.rgb(fill(d.source.index)).darker())
         .attr("d", chord)
@@ -137,7 +138,7 @@ var svg = d3.select("body").selectAll("div")
 
     // Add the group arc.
     g.append("path")
-        .style("fill", (d) => d.value ? fill(d.index) : null)
+        .style("fill", (d) => fill(d.index))
         .attr("id", function(d, i) { return "group" + d.index + "-" + j; })
         .attr("d", arc)
       .append("title")
