@@ -39,7 +39,7 @@ var format = d3.format(",.3r");
 
 // The chord layout, for computing the angles of chords and groups.
 var layout = d3.layout.chord().padding(0)
-// The color scale, for different categories of “worrisome” risk.
+// The color scale, for each chord tone
 var fill = (i) => {
     var colors = ["#c6362b",
                   "#c69a2b",
@@ -74,10 +74,6 @@ var svg = d3.select("body").selectAll("div")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-  var countryByName = d3.map(),
-      countryIndex = -1,
-      countryByIndex = [];
-
   // For each diagram…
   svg.each(function(matrix, j) {
     var svg = d3.select(this);
@@ -110,8 +106,7 @@ var svg = d3.select("body").selectAll("div")
       .append("title")
         .text((d) => d.value ? CHORDS[d.value] : "");
 
-    // Add the group label (but only for large groups, where it will fit).
-    // An alternative labeling mechanism would be nice for the small groups.
+    // Add the group label
     g.append("text")
         .attr("x", 6)
         .attr("dy", 15)
@@ -128,17 +123,6 @@ var svg = d3.select("body").selectAll("div")
         .text((d) => d.value ? CHORDS[d.index].substring(1) : "");
 
   });
-
-function type(d) {
-  d.amount = +d.amount;
-  d.risk = +d.risk;
-  d.valueOf = value; // for chord layout
-  return d;
-}
-
-function value() {
-  return this.amount;
-}
 
     </script>
 </html>
