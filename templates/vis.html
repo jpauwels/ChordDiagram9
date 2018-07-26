@@ -27,8 +27,8 @@ path.chord {
 const CHORDS = {{ chord_map|safe }}
 const matrix = {{ matrix|safe }}
 
-var width = 750,
-    height = 750,
+var width = 800,
+    height = 800,
     outerRadius = Math.min(width, height) / 2 - 4,
     innerRadius = outerRadius - 50;
 
@@ -150,7 +150,16 @@ var svg = d3.select("body").selectAll("div")
         .attr("dy", 15)
       .append("textPath")
         .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
-        .text((d) => d.value ? CHORDS[d.index] : "");
+        .text((d) => d.value ? CHORDS[d.index][0] : "");
+
+    g.append("text")
+        .attr("x", 6)
+        .attr("dy", 25)
+        .style("font-size", "8px")
+      .append("textPath")
+        .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
+        .text((d) => d.value ? CHORDS[d.index].substring(1) : "");
+
   });
 
 function type(d) {
