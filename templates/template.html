@@ -16,6 +16,9 @@
     </style>
 
     <body>
+        {% if audio_file %}
+        <audio autoplay="true" controls="true" src="{{ audio_file }}"></audio>
+        {% endif %}
         <ul>
             {% for track in track_list %}
             <li><a href={{url_for('get_track', name=track)}}>{{track}}</a></li>
