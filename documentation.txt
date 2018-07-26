@@ -1,5 +1,7 @@
 Set up:
     The json files are read from the folder called "tracks"
+    The audio files are read from the folder call "audio"
+    The audio file names must match the name of the corresponding track, with the file extension ".wav" were the tracks must have file extension ".json"
 
 How to run the code:
     1. Make sure you have all of the dependencies installed from requirements.txt
