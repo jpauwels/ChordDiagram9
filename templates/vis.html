@@ -125,7 +125,6 @@ var svg = d3.select("body").selectAll("div")
         .attr("class", "chord")
         .filter((d) => d.source.index != d.target.index)
         .style("fill", (d) => fill(d.source.index))
-        .style("stroke", (d) => d3.rgb(fill(d.source.index)).darker())
         .attr("d", chord)
       .append("title")
         .text((d) => CHORDS[d.target.index]);
