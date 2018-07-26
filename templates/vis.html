@@ -40,10 +40,6 @@ var debits = [],
 
 // The chord layout, for computing the angles of chords and groups.
 var layout = d3.layout.chord()
-    .sortGroups(d3.descending)
-    .sortSubgroups(d3.descending)
-    .sortChords(d3.descending)
-    .padding(.04);
 
 // The color scale, for different categories of “worrisome” risk.
 var fill = (i) => {
