@@ -1,0 +1,9 @@
+Set up:
+    The json files are read from the folder called "tracks"
+
+How to run the code:
+    1. Make sure you have all of the dependencies installed from requirements.txt
+       You can install from the commandline with pip: $ pip install -r requirements.txt
+    2. Run main.py
+    3. Go to localhost:5000 in your browser
+

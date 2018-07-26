@@ -16,21 +16,32 @@ def chord_id(label):
     return CHORDS.index(label)
 
 def process_track(path):
+    '''
+    Load track from json file and parse into a matrix
+    '''
+
+    # Load file
     with open(path) as f:
         d = json.load(f)
     labels = [chord_id(c['label']) for c in d["chordSequence"]]
     changes = [(labels[i], labels[i+1]) for i in range(len(labels) - 1)]
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
+    
+    # Adds chords
     for start, end in changes:
         matrix[start][end] = 0.25 
         matrix[end][start] = 0.1
 
+    # Gives each arc the same width
     for i in range(len(matrix)):
         matrix[i][i] = 1 - sum(matrix[i])
 
     return matrix
 
 def default_matrix():
+    '''
+    Generates the matrix that is shown on page load
+    '''
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
     for i in range(len(matrix)):
         matrix[i][i] = 1 - sum(matrix[i])
@@ -38,6 +49,9 @@ def default_matrix():
 
 @app.route("/")
 def template_test():
+    '''
+    The initial page with empty diagram
+    '''
     return render_template('template.html',
                             matrix=default_matrix(),
                             chord_map=CHORDS,
@@ -45,6 +59,9 @@ def template_test():
 
 @app.route("/tracks/<name>")
 def get_track(name):
+    '''
+    Page for each song
+    '''
     return render_template('template.html',
                             track_list=tracks,
                             chord_map=CHORDS,
