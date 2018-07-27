@@ -80,6 +80,10 @@ def get_audio(name):
     '''
     return send_from_directory("audio", name)
 
+@app.route("/static/<resource>")
+def get_static(resource):
+    return send_from_directory("static", resource)
+
 if __name__ == '__main__':
     app.run(debug=True)
 
