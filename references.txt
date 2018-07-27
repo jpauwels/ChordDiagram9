@@ -1,0 +1,11 @@
+Javascript library for creating the diagram:
+https://github.com/d3/d3-chord
+
+Python library for creating the server:
+http://flask.pocoo.org/docs/0.12/quickstart/
+
+Python library for inseerting data into HTML templates
+http://jinja.pocoo.org/docs/2.10/
+
+Images:
+https://suitesculturelles.files.wordpress.com/2011/12/music.jpg

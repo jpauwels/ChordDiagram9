@@ -1,4 +1,5 @@
 <html>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
         .group text {
           font: 11px sans-serif;
@@ -16,33 +17,47 @@
     </style>
 
     <style>
-        a {
-            margin: 20px;
-            padding: 5px;
-            border: solid lightgrey 1px;
-            text-decoration: none;
-            border-radius: 3px
-        }
-        html { 
+        body { 
             height: 100%;
             margin:0px;
             background: url(/static/image.jpg) no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
         }
-
+        .row {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        .btn {
+            margin: 5px;
+        }
     </style>
 
     <body>
-        <ul>
-            {% for track in track_list %}
-            <a href={{url_for('get_track', name=track)}}>{{track}}</a>
-            {% endfor %}
-        </ul>
-        <div id="chart"></div>
-        {% if audio_file %}
-        <audio autoplay="true" controls="true" src="{{ audio_file }}"></audio>
-        {% endif %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-8 card">
+                    <div class="card-body" style="display: flex; justify-content: space-between; flex-wrap: wrap">
+                        {% for track in track_list %}
+                        <a class="btn btn-primary" href={{url_for('get_track', name=track)}}>{{track}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-8" id="chart"></div>
+                <div class="col"></div>
+            </div>
+            {% if audio_file %}
+            <div class="row justify-content-center" style="padding-bottom: 25px">
+                <div class="col-2">
+                    <audio autoplay="true" controls="true" src="{{ audio_file }}"></audio>
+            
+                </div>
+            </div>
+            {% endif %}
+        </div>
     </body>
 
     <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -83,9 +98,8 @@ var chord = d3.svg.chord()
     .radius(innerRadius);
 
 // Add an SVG element for each diagram, and translate the origin to the center.
-var svg = d3.select("body").selectAll("div")
+var svg = d3.select("#chart")
     .data([matrix, []])
-  .enter().append("div")
     .style("display", "inline-block")
     .style("width", width + "px")
     .style("height", height + "px")
