@@ -157,6 +157,22 @@ var svg = d3.select("#chart")
         .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
         .text((d) => d.value ? CHORDS[d.index].substring(1) : "");
 
+    // Add arrows
+    var arrowRadius = (width/2) - (outerRadius - innerRadius) -12 
+    var arrowTransform = (a) => {
+        var angle = a * 180 / Math.PI
+        var x = Math.sin(a) * arrowRadius
+        var y = -1 * Math.cos(a) * arrowRadius
+        return `rotate(${angle} ${x} ${y}) translate(${x}, ${y}) scale(1.5)`
+    }
+    layout.chords()
+        .map((d) => d.target)
+        .filter((d) => d.index != d.subindex)
+        .map((d) => Object.assign({}, d, {angle: (d.startAngle + d.endAngle) / 2}))
+        .map((d) => svg.append("path")
+                       .attr("d", d3.svg.symbol().type("triangle-up"))
+                       .attr("transform", () => arrowTransform(d.angle))
+                       .style("fill", fill(d.subindex)))
   });
 
     </script>
