@@ -37,7 +37,7 @@ def process_track(path):
     for i in range(len(matrix)):
         matrix[i][i] = 1 - sum(matrix[i])
 
-    return matrix
+    return matrix, d["chordSequence"]
 
 def default_matrix():
     '''
@@ -67,11 +67,13 @@ def get_track(name):
     '''
     Page for each song
     '''
+    matrix, sequence = process_track(os.path.join(TRACK_DIR, name)) 
     return render_template('template.html',
                             audio_file=get_audio_path(name),
                             track_list=tracks,
                             chord_map=CHORDS,
-                            matrix=process_track(os.path.join(TRACK_DIR, name)))
+                            matrix=matrix,
+                            sequence=sequence)
 
 @app.route("/tracks/audio/<name>")
 def get_audio(name):
