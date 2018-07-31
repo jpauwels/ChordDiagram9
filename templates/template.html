@@ -66,7 +66,7 @@
 
 const CHORDS = {{ chord_map|safe }}
 const matrix = {{ matrix|safe }}
-const sequence = {{ sequence|safe }}
+const sequence = {% if sequence %} {{ sequence|safe }} {% else %} [] {% endif %}
 
 var width = 800,
     height = 800,
