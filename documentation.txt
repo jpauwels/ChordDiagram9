@@ -8,6 +8,7 @@ How to run the code:
        You can install from the commandline with pip: $ pip install -r requirements.txt
     2. Run main.py
     3. Go to localhost:5000 in your browser
+    Note: Python3 is required. Make sure to install all dependencies for Python3, even if you have them installed already for Python3. When running the code, make sure to run with Python3, by default your system might use Python2.
 
 Project description:
     The server is written in Python with Flask framework. When the user requests the page it sends back the file template.html. Reading the files in the tracks folder it generates the list of links and inserts this in the template. When the user clicks on a link, the server sends the template again, but first loads and parses the JSON file and inserts into the template. Inside the template, there is some Javascript code that plots the data with the d3 library.
