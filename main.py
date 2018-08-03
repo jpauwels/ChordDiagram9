@@ -28,11 +28,6 @@ def process_track(path):
     changes = [(labels[i], labels[i+1]) for i in range(len(labels) - 1)]
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
     
-    # Adds chords
-    for start, end in changes:
-        matrix[start][end] = 0.5 
-        matrix[end][start] = 0.25
-
     # Gives each arc the same width
     for i in range(len(matrix)):
         matrix[i][i] = 1 - sum(matrix[i])

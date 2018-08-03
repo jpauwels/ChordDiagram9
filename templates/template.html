@@ -65,7 +65,7 @@
     <script>
 
 const CHORDS = {{ chord_map|safe }}
-const matrix = {{ matrix|safe }}
+var matrix = {{ matrix|safe }}
 const sequence = {% if sequence %} {{ sequence|safe }} {% else %} [] {% endif %}
 
 var width = 800,
@@ -99,102 +99,140 @@ var arc = d3.svg.arc()
 var chord = d3.svg.chord()
     .radius(innerRadius);
 
-// Add an SVG element for each diagram, and translate the origin to the center.
-var svg = d3.select("#chart")
-    .data([matrix, []])
-    .style("display", "inline-block")
-    .style("width", width + "px")
-    .style("height", height + "px")
-  .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-  // For each diagram…
-  svg.each(function(matrix, j) {
-    var svg = d3.select(this);
-
-    // Compute the chord layout.
-    layout.matrix({{ matrix }} );
-
-    // Add chords.
-    svg.selectAll(".chord")
-        .data(layout.chords)
-      .enter().append("path")
-        .attr("class", "chord")
-        .filter((d) => d.source.index != d.target.index)
-        .style("fill", (d) => fill(d.source.index))
-        .attr("d", chord)
-      .append("title")
-        .text((d) => CHORDS[d.target.index]);
-
-    // Add groups.
-    var g = svg.selectAll(".group")
-        .data(layout.groups)
-      .enter().append("g")
-        .attr("class", "group");
-
-    // Add the group arc.
-    g.append("path")
-        .style("fill", (d) => fill(d.index))
-        .attr("class", "arc")
-        .attr("id", function(d, i) { return "group" + d.index + "-" + j; })
-        .attr("d", arc)
-      .append("title")
-        .text((d) => d.value ? CHORDS[d.value] : "");
-
-    // Add the group label
-    g.append("text")
-        .attr("x", 6)
-        .attr("dy", 15)
-      .append("textPath")
-        .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
-        .text((d) => d.value ? CHORDS[d.index][0] : "");
-
-    g.append("text")
-        .attr("x", 6)
-        .attr("dy", 25)
-        .style("font-size", "8px")
-      .append("textPath")
-        .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
-        .text((d) => d.value ? CHORDS[d.index].substring(1) : "");
-
-    // Add arrows
-    var arrowRadius = (width/2) - (outerRadius - innerRadius) -12 
-    var arrowTransform = (a) => {
-        var angle = a * 180 / Math.PI
-        var x = Math.sin(a) * arrowRadius
-        var y = -1 * Math.cos(a) * arrowRadius
-        return `rotate(${angle} ${x} ${y}) translate(${x}, ${y}) scale(1.5)`
+var svg = null
+  var nextChord = (fromItem, toItem) => {
+    if (svg) {
+        document.getElementById("chart")
+                .removeChild(document.getElementsByTagName("svg")[0])    
     }
-    layout.chords()
-        .map((d) => d.target)
-        .filter((d) => d.index != d.subindex)
-        .map((d) => Object.assign({}, d, {angle: (d.startAngle + d.endAngle) / 2}))
-        .map((d, i) => svg.append("path")
-                       .attr("class", "arrow")
-                       .attr("id", () => `a${i}`)
-                       .attr("d", d3.svg.symbol().type("triangle-up"))
-                       .attr("transform", () => arrowTransform(d.angle))
-                      // .style("visibility", "hidden")
-                       .style("fill", fill(d.index)))
-    });
+    // Add an SVG element for each diagram, and translate the origin to the center.
+    svg = d3.select("#chart")
+        .data([matrix, []])
+        .style("display", "inline-block")
+        .style("width", width + "px")
+        .style("height", height + "px")
+      .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    // Play-along
-    svg.selectAll(".arc")
-        .style("opacity", "0.5")
-    var highlight = (c) => {
-    svg.selectAll(".arc")
-        .style("opacity", "0.5")
-        var group = CHORDS.indexOf(c["label"])
-        console.log(group)
-        svg.select(`#group${group}-0`)
-            .style("opacity", "1")
+      var fromChord = fromItem ? CHORDS.indexOf(fromItem["label"]) : -1
+      var toChord = toItem ? CHORDS.indexOf(toItem["label"]) : -1
+
+      // For each diagram…
+      svg.each(function(matrix, j) {
+            // Adds a single chord change
+          if (fromChord !== -1 && toChord !== -1){
+                matrix[fromChord][toChord] =0.75 
+              matrix[toChord][fromChord] = 0.25
+              matrix[fromChord][fromChord] = 0.25
+              matrix[toChord][toChord] = 0.75
+          }
+        var svg = d3.select(this);
+
+
+        // Compute the chord layout.
+        layout.matrix(matrix);
+
+        // Add chords.
+        svg.selectAll(".chord")
+            .data(layout.chords)
+          .enter().append("path")
+            .attr("class", "chord")
+            .filter((d) => d.source.index != d.target.index)
+            .style("fill", (d) => fill(d.source.index))
+            .attr("d", chord)
+          .append("title")
+            .text((d) => CHORDS[d.target.index]);
+
+        // Add groups.
+        var g = svg.selectAll(".group")
+            .data(layout.groups)
+          .enter().append("g")
+            .attr("class", "group");
+
+        // Add the group arc.
+        g.append("path")
+            .style("fill", (d) => fill(d.index))
+            .attr("class", "arc")
+            .attr("id", function(d, i) { return "group" + d.index + "-" + j; })
+            .attr("d", arc)
+          .append("title")
+            .text((d) => d.value ? CHORDS[d.value] : "");
+
+        // Add the group label
+        g.append("text")
+            .attr("x", 6)
+            .attr("dy", 15)
+          .append("textPath")
+            .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
+            .text((d) => d.value ? CHORDS[d.index][0] : "");
+
+        g.append("text")
+            .attr("x", 6)
+            .attr("dy", 25)
+            .style("font-size", "8px")
+          .append("textPath")
+            .attr("xlink:href", function(d) { return "#group" + d.index + "-" + j; })
+            .text((d) => d.value ? CHORDS[d.index].substring(1) : "");
+
+        // Add arrows
+        var arrowRadius = (width/2) - (outerRadius - innerRadius) -12 
+        var arrowTransform = (a) => {
+            var angle = a * 180 / Math.PI
+            var x = Math.sin(a) * arrowRadius
+            var y = -1 * Math.cos(a) * arrowRadius
+            return `rotate(${angle} ${x} ${y}) translate(${x}, ${y}) scale(1.5)`
+        }
+        layout.chords()
+            .map((d) => d.target)
+            .filter((d) => d.index != d.subindex)
+            .map((d) => Object.assign({}, d, {angle: (d.startAngle + d.endAngle) / 2}))
+            .map((d, i) => svg.append("path")
+                           .attr("class", "arrow")
+                           .attr("id", () => `a${i}`)
+                           .attr("d", d3.svg.symbol().type("triangle-up"))
+                           .attr("transform", () => arrowTransform(d.angle))
+                          // .style("visibility", "hidden")
+                           .style("fill", fill(d.index)))
+        });
+
+      svg.selectAll(".arc")
+         .style("opacity", 1)
+      svg.select(`#group${fromChord}-0`)
+         .style("opacity", 0.5)
+
+      // prepare for the next change
+     matrix = {{ matrix }}
+  };
+
+    nextChord()
+
+    var cleanup = () => {
+        svg.selectAll(".chord, .arrow").remove()
+        svg.selectAll(".arc")
+           .style("opacity", 1)
+      
     }
 
-    var playalong = () => sequence.map((x) => setTimeout(() => highlight(x), x["start"]*1000))
-    document.getElementsByTagName("audio")[0].addEventListener("playing", () => {console.log('playing'); playalong()})
+    var playalong = () => {
+        // Map each chord change, and clean up at the end
+        var speed = 1000
+        // Play all but last
+        sequence.map(
+            (x, i, a) => setTimeout(() => {if (i < sequence.length) nextChord(x, a[i+1])},
+                                    x["start"]*speed))
+        // Play last
+        setTimeout(() => nextChord(sequence[sequence.length-1]),
+                   sequence[sequence.length-1]["start"]*speed)
+        // Cleanup
+        setTimeout(cleanup, sequence[sequence.length-1]["end"]*speed)
+    }
+    if (document.getElementsByTagName("audio").length) {
+        document.getElementsByTagName("audio")[0]
+                .addEventListener("playing", playalong)
+    }
     </script>
 </html>
 
