@@ -58,9 +58,9 @@ def search():
     results = r.json()['results']
     data = []
     for result in results:
-        #if True:
+        if True:
         # Turn on to check DB before inserting link
-        if get_db()['pieces'].find_one({'_id': int(result['id'])}):
+        #if get_db()['pieces'].find_one({'_id': int(result['id'])}):
             data.append(result)
         if len(data) == 20:
             break
