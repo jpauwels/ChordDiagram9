@@ -30,11 +30,11 @@ def process_track(id):
     Load track from json file and parse into a matrix
     '''
 
-    #print(get_db()['pieces'].find({}).count())
-
     # Load chords from DB
     d = get_db()['pieces'].find_one({'_id': id})
     labels = [chord_id(c['label']) for c in d["chordSequence"]]
+    if not labels:
+        raise Exception("No labels found")
     print(labels)
     changes = [(labels[i], labels[i+1]) for i in range(len(labels) - 1)]
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
