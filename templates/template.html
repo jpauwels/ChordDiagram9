@@ -21,7 +21,7 @@
             height: 100%;
             width: 100%;
             margin:0px;
-            background: url(/static/image3.jpg) no-repeat center center;
+            background: url(/static/image.jpg) no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
         }
@@ -35,18 +35,18 @@
     </style>
 
     <body>
-            <form>
-                    Search<br>
-                    <input type="text" name="search " style="align-content: center">
-                    <input type="submit" value="Submit">
-                           
-                  </form>
+        <form action="{{ url_for('search') }}" method="GET">
+            Search
+            <br>
+            <input type="text" name="search " style="align-content: center">
+            <input type="submit" value="Submit">           
+        </form>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-8 card">
-                    <div class="card-body" style="display: flex; justify-content: space-between; flex-wrap: wrap">
-                        {% for id in id_list %}
-                        <a class="btn btn-primary" href={{url_for('get_track', id=id)}}>{{id}}</a>
+                    <div class="card-body" style="display: flex; justify-content: space-around; flex-wrap: wrap">
+                        {% for track in track_list %}
+                        <a class="btn btn-primary" href={{url_for('get_track', id=track['id'])}}><span class="font-weight-bold">{{track['name']}}</span><br><span>{{track['artist_name']}}</span></a>
                         {% endfor %}
                     </div>
                 </div>

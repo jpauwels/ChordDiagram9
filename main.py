@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory, g
+from flask import Flask, render_template, send_from_directory, g, request
 import json
 import pymongo
 import requests
@@ -22,9 +22,6 @@ def get_db():
         g.client = pymongo.MongoClient('mongodb+srv://readonly:1doOzIOAZbbG8I5s@freecluster-78b1r.mongodb.net/test')
     return g.client.jamendo
 
-get_db()
-exit()
-
 def chord_id(label):
     return CHORDS.index(label)
 
@@ -32,6 +29,8 @@ def process_track(id):
     '''
     Load track from json file and parse into a matrix
     '''
+
+    #print(get_db()['pieces'].find({}).count())
 
     # Load chords from DB
     d = get_db()['pieces'].find_one({'_id': id})
@@ -67,8 +66,28 @@ def get_audio_path(id):
     r = requests.get(base_url+'v3.0/tracks', params={'id': id, 'client_id': client_id})
     return r.json()['results'][0]['audio']
 
+@app.route("/search")
+def search():
+    query = request.url.split("=")[1].replace('+', ' ')
+    p = {'namesearch': query, 'client_id': client_id, 'format': 'json', 'limit': 100}
+    r = requests.get("{}{}".format(base_url, "v3.0/tracks"), params=p)
+    print("Jamendo search: HTTP {}".format(r.status_code))
+    results = r.json()['results']
+    data = []
+    for result in results:
+        if True:
+        # Turn on to check DB before inserting link
+        #if get_db()['pieces'].find_one({'_id': int(result['id'])}):
+            data.append(result)
+        if len(data) == 20:
+            break
+    return render_template('template.html',
+                            matrix=default_matrix(),
+                            chord_map=CHORDS,
+                            track_list=data)
+
 @app.route("/")
-def template_test():
+def index():
     '''
     The initial page with empty diagram
     '''
@@ -82,6 +101,8 @@ def get_track(id):
     '''
     Page for each song
     '''
+    if id == "favicon.ico":
+        return ''
     id = int(id)
     matrix, sequence = process_track(id)
     return render_template('template.html',
