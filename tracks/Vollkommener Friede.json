@@ -1,0 +1,317 @@
+{
+    "_id": 1235734,
+    "duration": 169.1,
+    "chordRatio": {
+        "Bbmin7": 0.04553518628030744,
+        "Gbmaj": 0.2075694855115317,
+        "Bbmaj": 0.01892371377882907,
+        "Abmaj": 0.21762270845653472,
+        "Dbmaj": 0.3790656416321701,
+        "Bbmin": 0.0059136605558840925,
+        "Fmin": 0.02483737433471329,
+        "Ab7": 0.006505026611472468,
+        "Ebmin": 0.027202838557066834,
+        "Ebmin7": 0.027202838557066875,
+        "Gbmaj7": 0.014784151389710232,
+        "Gbmin": 0.02483737433471312
+    },
+    "confidence": 0.8752955082742316,
+    "chordSequence": [
+        {
+            "start": 0,
+            "end": 2.25,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 2.25,
+            "end": 4.65,
+            "label": "Abmaj"
+        },
+        {
+            "start": 4.65,
+            "end": 7.25,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 7.25,
+            "end": 11.85,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 11.85,
+            "end": 13.85,
+            "label": "Abmaj"
+        },
+        {
+            "start": 13.85,
+            "end": 16.05,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 16.05,
+            "end": 18.45,
+            "label": "Abmaj"
+        },
+        {
+            "start": 18.45,
+            "end": 20.65,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 20.65,
+            "end": 22.75,
+            "label": "Abmaj"
+        },
+        {
+            "start": 22.75,
+            "end": 25.25,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 25.25,
+            "end": 29.45,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 29.45,
+            "end": 31.65,
+            "label": "Abmaj"
+        },
+        {
+            "start": 31.65,
+            "end": 33.85,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 33.85,
+            "end": 36.35,
+            "label": "Abmaj"
+        },
+        {
+            "start": 36.35,
+            "end": 38.45,
+            "label": "Ebmin"
+        },
+        {
+            "start": 38.45,
+            "end": 40.55,
+            "label": "Bbmaj"
+        },
+        {
+            "start": 40.55,
+            "end": 43.05,
+            "label": "Ebmin"
+        },
+        {
+            "start": 43.05,
+            "end": 44.15,
+            "label": "Bbmaj"
+        },
+        {
+            "start": 44.15,
+            "end": 45.15,
+            "label": "Bbmin"
+        },
+        {
+            "start": 45.15,
+            "end": 47.45,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 47.45,
+            "end": 49.05,
+            "label": "Abmaj"
+        },
+        {
+            "start": 49.05,
+            "end": 51.85,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 51.85,
+            "end": 54.45,
+            "label": "Abmaj"
+        },
+        {
+            "start": 54.45,
+            "end": 56.55,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 56.55,
+            "end": 61.25,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 61.25,
+            "end": 63.35,
+            "label": "Abmaj"
+        },
+        {
+            "start": 63.35,
+            "end": 65.95,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 65.95,
+            "end": 68.05,
+            "label": "Abmaj"
+        },
+        {
+            "start": 68.05,
+            "end": 70.25,
+            "label": "Ebmin7"
+        },
+        {
+            "start": 70.25,
+            "end": 72.85,
+            "label": "Bbmin7"
+        },
+        {
+            "start": 72.85,
+            "end": 75.25,
+            "label": "Ebmin7"
+        },
+        {
+            "start": 75.25,
+            "end": 77.55,
+            "label": "Bbmin7"
+        },
+        {
+            "start": 77.55,
+            "end": 80.05,
+            "label": "Gbmaj7"
+        },
+        {
+            "start": 80.05,
+            "end": 82.65,
+            "label": "Abmaj"
+        },
+        {
+            "start": 82.65,
+            "end": 94.15,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 94.15,
+            "end": 96.25,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 96.25,
+            "end": 98.15,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 98.15,
+            "end": 100.95,
+            "label": "Bbmin7"
+        },
+        {
+            "start": 100.95,
+            "end": 103.05,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 103.05,
+            "end": 105.95,
+            "label": "Abmaj"
+        },
+        {
+            "start": 105.95,
+            "end": 108.25,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 108.25,
+            "end": 110.35,
+            "label": "Abmaj"
+        },
+        {
+            "start": 110.35,
+            "end": 112.55,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 112.55,
+            "end": 117.25,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 117.25,
+            "end": 119.65,
+            "label": "Fmin"
+        },
+        {
+            "start": 119.65,
+            "end": 121.65,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 121.65,
+            "end": 124.35,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 124.35,
+            "end": 126.15,
+            "label": "Fmin"
+        },
+        {
+            "start": 126.15,
+            "end": 128.45,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 128.45,
+            "end": 135.65,
+            "label": "Abmaj"
+        },
+        {
+            "start": 135.65,
+            "end": 140.35,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 140.35,
+            "end": 144.55,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 144.55,
+            "end": 146.95,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 146.95,
+            "end": 148.05,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 148.05,
+            "end": 149.15,
+            "label": "Ab7"
+        },
+        {
+            "start": 149.15,
+            "end": 156.05,
+            "label": "Dbmaj"
+        },
+        {
+            "start": 156.05,
+            "end": 158.65,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 158.65,
+            "end": 162.85,
+            "label": "Gbmin"
+        },
+        {
+            "start": 162.85,
+            "end": 169.1,
+            "label": "Dbmaj"
+        }
+    ],
+    "distinctChords": 12
+}

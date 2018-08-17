@@ -1,0 +1,33 @@
+{
+    "_id": 1235149,
+    "duration": 18.4,
+    "chordRatio": {
+        "Bmin7": 0.15489130434782597,
+        "Bmin": 0.16304347826086957,
+        "Bmaj": 0.6820652173913044
+    },
+    "confidence": 0.8648648648648649,
+    "chordSequence": [
+        {
+            "start": 0,
+            "end": 5.75,
+            "label": "Bmaj"
+        },
+        {
+            "start": 5.75,
+            "end": 8.75,
+            "label": "Bmin"
+        },
+        {
+            "start": 8.75,
+            "end": 15.55,
+            "label": "Bmaj"
+        },
+        {
+            "start": 15.55,
+            "end": 18.4,
+            "label": "Bmin7"
+        }
+    ],
+    "distinctChords": 3
+}

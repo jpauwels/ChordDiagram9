@@ -1,0 +1,512 @@
+{
+    "_id": 1235737,
+    "duration": 165.9,
+    "chordRatio": {
+        "Gbmaj": 0.03616636528028935,
+        "Bmaj": 0.009041591320072333,
+        "Bmin": 0.016274864376130172,
+        "Dbmin7": 0.020494273658830612,
+        "Dmin7": 0.026522001205545456,
+        "Amin7": 0.014165159734779954,
+        "Dmaj": 0.106088004822182,
+        "Gmin": 0.11512959614225433,
+        "Amaj": 0.03013863773357444,
+        "Ebmaj": 0.03496081977094625,
+        "Dmin": 0.008438818565400793,
+        "Gmaj": 0.032549728752260344,
+        "Dmaj7": 0.013261000602772771,
+        "Gbmin": 0.17420132610006048,
+        "E7": 0.016274864376130214,
+        "Amin": 0.010849909584086867,
+        "Gbmin7": 0.02411091018685955,
+        "Cmaj": 0.007233273056057968,
+        "Fmaj": 0.07715491259795072,
+        "Abmin": 0.06509945750452077,
+        "Bmin7": 0.028631705846895634,
+        "Emaj": 0.13321277878239896
+    },
+    "confidence": 0.7343373493975903,
+    "chordSequence": [
+        {
+            "start": 0,
+            "end": 1.75,
+            "label": "Bmin7"
+        },
+        {
+            "start": 1.75,
+            "end": 4.95,
+            "label": "Abmin"
+        },
+        {
+            "start": 4.95,
+            "end": 6.45,
+            "label": "Emaj"
+        },
+        {
+            "start": 6.45,
+            "end": 7.65,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 7.65,
+            "end": 10.15,
+            "label": "Abmin"
+        },
+        {
+            "start": 10.15,
+            "end": 11.55,
+            "label": "Emaj"
+        },
+        {
+            "start": 11.55,
+            "end": 12.75,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 12.75,
+            "end": 15.25,
+            "label": "Abmin"
+        },
+        {
+            "start": 15.25,
+            "end": 16.75,
+            "label": "Emaj"
+        },
+        {
+            "start": 16.75,
+            "end": 17.85,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 17.85,
+            "end": 20.45,
+            "label": "Abmin"
+        },
+        {
+            "start": 20.45,
+            "end": 22.25,
+            "label": "Dbmin7"
+        },
+        {
+            "start": 22.25,
+            "end": 24.55,
+            "label": "Emaj"
+        },
+        {
+            "start": 24.55,
+            "end": 25.85,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 25.85,
+            "end": 27.45,
+            "label": "Dbmin7"
+        },
+        {
+            "start": 27.45,
+            "end": 29.65,
+            "label": "Emaj"
+        },
+        {
+            "start": 29.65,
+            "end": 30.85,
+            "label": "Gbmaj"
+        },
+        {
+            "start": 30.85,
+            "end": 32.35,
+            "label": "Bmaj"
+        },
+        {
+            "start": 32.35,
+            "end": 36.05,
+            "label": "Gbmin"
+        },
+        {
+            "start": 36.05,
+            "end": 37.25,
+            "label": "Dmaj"
+        },
+        {
+            "start": 37.25,
+            "end": 38.55,
+            "label": "Emaj"
+        },
+        {
+            "start": 38.55,
+            "end": 40.95,
+            "label": "Gbmin"
+        },
+        {
+            "start": 40.95,
+            "end": 42.35,
+            "label": "Dmaj"
+        },
+        {
+            "start": 42.35,
+            "end": 43.45,
+            "label": "Emaj"
+        },
+        {
+            "start": 43.45,
+            "end": 45.75,
+            "label": "Gbmin"
+        },
+        {
+            "start": 45.75,
+            "end": 47.45,
+            "label": "Dmaj"
+        },
+        {
+            "start": 47.45,
+            "end": 48.55,
+            "label": "Emaj"
+        },
+        {
+            "start": 48.55,
+            "end": 51.15,
+            "label": "Gbmin"
+        },
+        {
+            "start": 51.15,
+            "end": 52.55,
+            "label": "Bmin"
+        },
+        {
+            "start": 52.55,
+            "end": 53.55,
+            "label": "Gbmin"
+        },
+        {
+            "start": 53.55,
+            "end": 54.95,
+            "label": "Dmaj"
+        },
+        {
+            "start": 54.95,
+            "end": 56.35,
+            "label": "Emaj"
+        },
+        {
+            "start": 56.35,
+            "end": 57.65,
+            "label": "Bmin"
+        },
+        {
+            "start": 57.65,
+            "end": 58.65,
+            "label": "Gbmin"
+        },
+        {
+            "start": 58.65,
+            "end": 60.05,
+            "label": "Dmaj"
+        },
+        {
+            "start": 60.05,
+            "end": 61.25,
+            "label": "Emaj"
+        },
+        {
+            "start": 61.25,
+            "end": 63.75,
+            "label": "Amaj"
+        },
+        {
+            "start": 63.75,
+            "end": 66.25,
+            "label": "Gbmin"
+        },
+        {
+            "start": 66.25,
+            "end": 67.75,
+            "label": "Dmaj"
+        },
+        {
+            "start": 67.75,
+            "end": 68.85,
+            "label": "Emaj"
+        },
+        {
+            "start": 68.85,
+            "end": 71.35,
+            "label": "Gbmin"
+        },
+        {
+            "start": 71.35,
+            "end": 72.65,
+            "label": "Dmaj"
+        },
+        {
+            "start": 72.65,
+            "end": 73.85,
+            "label": "Emaj"
+        },
+        {
+            "start": 73.85,
+            "end": 76.45,
+            "label": "Gbmin"
+        },
+        {
+            "start": 76.45,
+            "end": 77.75,
+            "label": "Dmaj"
+        },
+        {
+            "start": 77.75,
+            "end": 78.95,
+            "label": "Emaj"
+        },
+        {
+            "start": 78.95,
+            "end": 81.45,
+            "label": "Gbmin"
+        },
+        {
+            "start": 81.45,
+            "end": 83.05,
+            "label": "Bmin7"
+        },
+        {
+            "start": 83.05,
+            "end": 85.25,
+            "label": "Dmaj7"
+        },
+        {
+            "start": 85.25,
+            "end": 86.65,
+            "label": "E7"
+        },
+        {
+            "start": 86.65,
+            "end": 88.05,
+            "label": "Bmin7"
+        },
+        {
+            "start": 88.05,
+            "end": 88.95,
+            "label": "Gbmin"
+        },
+        {
+            "start": 88.95,
+            "end": 90.35,
+            "label": "Dmaj"
+        },
+        {
+            "start": 90.35,
+            "end": 91.55,
+            "label": "Emaj"
+        },
+        {
+            "start": 91.55,
+            "end": 94.05,
+            "label": "Amaj"
+        },
+        {
+            "start": 94.05,
+            "end": 96.65,
+            "label": "Gbmin"
+        },
+        {
+            "start": 96.65,
+            "end": 97.95,
+            "label": "Dmaj"
+        },
+        {
+            "start": 97.95,
+            "end": 99.15,
+            "label": "Emaj"
+        },
+        {
+            "start": 99.15,
+            "end": 101.65,
+            "label": "Gbmin7"
+        },
+        {
+            "start": 101.65,
+            "end": 103.05,
+            "label": "Dmaj"
+        },
+        {
+            "start": 103.05,
+            "end": 104.35,
+            "label": "E7"
+        },
+        {
+            "start": 104.35,
+            "end": 106.65,
+            "label": "Gbmin"
+        },
+        {
+            "start": 106.65,
+            "end": 108.05,
+            "label": "Dmaj"
+        },
+        {
+            "start": 108.05,
+            "end": 109.25,
+            "label": "Emaj"
+        },
+        {
+            "start": 109.25,
+            "end": 110.75,
+            "label": "Gbmin7"
+        },
+        {
+            "start": 110.75,
+            "end": 111.65,
+            "label": "Dmaj"
+        },
+        {
+            "start": 111.65,
+            "end": 113.25,
+            "label": "Dmin7"
+        },
+        {
+            "start": 113.25,
+            "end": 115.55,
+            "label": "Fmaj"
+        },
+        {
+            "start": 115.55,
+            "end": 117.05,
+            "label": "Gmaj"
+        },
+        {
+            "start": 117.05,
+            "end": 118.45,
+            "label": "Dmin7"
+        },
+        {
+            "start": 118.45,
+            "end": 120.55,
+            "label": "Fmaj"
+        },
+        {
+            "start": 120.55,
+            "end": 121.95,
+            "label": "Gmaj"
+        },
+        {
+            "start": 121.95,
+            "end": 123.35,
+            "label": "Dmin7"
+        },
+        {
+            "start": 123.35,
+            "end": 124.15,
+            "label": "Amin"
+        },
+        {
+            "start": 124.15,
+            "end": 125.65,
+            "label": "Fmaj"
+        },
+        {
+            "start": 125.65,
+            "end": 126.95,
+            "label": "Gmaj"
+        },
+        {
+            "start": 126.95,
+            "end": 128.35,
+            "label": "Dmin"
+        },
+        {
+            "start": 128.35,
+            "end": 129.35,
+            "label": "Amin"
+        },
+        {
+            "start": 129.35,
+            "end": 130.75,
+            "label": "Fmaj"
+        },
+        {
+            "start": 130.75,
+            "end": 131.95,
+            "label": "Gmaj"
+        },
+        {
+            "start": 131.95,
+            "end": 133.15,
+            "label": "Cmaj"
+        },
+        {
+            "start": 133.15,
+            "end": 133.85,
+            "label": "Fmaj"
+        },
+        {
+            "start": 133.85,
+            "end": 136.85,
+            "label": "Gmin"
+        },
+        {
+            "start": 136.85,
+            "end": 138.25,
+            "label": "Ebmaj"
+        },
+        {
+            "start": 138.25,
+            "end": 139.55,
+            "label": "Fmaj"
+        },
+        {
+            "start": 139.55,
+            "end": 142.05,
+            "label": "Gmin"
+        },
+        {
+            "start": 142.05,
+            "end": 143.45,
+            "label": "Ebmaj"
+        },
+        {
+            "start": 143.45,
+            "end": 144.55,
+            "label": "Fmaj"
+        },
+        {
+            "start": 144.55,
+            "end": 146.95,
+            "label": "Gmin"
+        },
+        {
+            "start": 146.95,
+            "end": 148.55,
+            "label": "Ebmaj"
+        },
+        {
+            "start": 148.55,
+            "end": 149.65,
+            "label": "Fmaj"
+        },
+        {
+            "start": 149.65,
+            "end": 152.05,
+            "label": "Gmin"
+        },
+        {
+            "start": 152.05,
+            "end": 153.45,
+            "label": "Ebmaj"
+        },
+        {
+            "start": 153.45,
+            "end": 154.75,
+            "label": "Fmaj"
+        },
+        {
+            "start": 154.75,
+            "end": 163.55,
+            "label": "Gmin"
+        },
+        {
+            "start": 163.55,
+            "end": 165.9,
+            "label": "Amin7"
+        }
+    ],
+    "distinctChords": 22
+}
