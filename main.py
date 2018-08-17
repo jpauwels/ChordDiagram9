@@ -32,31 +32,14 @@ def process_track(id):
 
     # Load chords from DB
     d = get_db()['pieces'].find_one({'_id': id})
-    labels = [chord_id(c['label']) for c in d["chordSequence"]]
-    if not labels:
-        raise Exception("No labels found")
-    print(labels)
-    changes = [(labels[i], labels[i+1]) for i in range(len(labels) - 1)]
-    matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
-    
-    # Adds chords
-    for start, end in changes:
-        matrix[start][end] = 0.5 
-        matrix[end][start] = 0.25
+    if not d:
+        raise Exception("No chords found")
+    return d["chordSequence"]
 
-    # Gives each arc the same width
-    for i in range(len(matrix)):
-        matrix[i][i] = 1 - sum(matrix[i])
-
-    return matrix, d["chordSequence"]
-
-def default_matrix():
-    '''
-    Generates the matrix that is shown on page load
-    '''
+def identity_matrix():
     matrix = [[0]*len(CHORDS) for _ in range(len(CHORDS))]
     for i in range(len(matrix)):
-        matrix[i][i] = 1 - sum(matrix[i])
+        matrix[i][i] = 1
     return matrix 
 
 def get_audio_path(id):
@@ -75,14 +58,14 @@ def search():
     results = r.json()['results']
     data = []
     for result in results:
-        if True:
+        #if True:
         # Turn on to check DB before inserting link
-        #if get_db()['pieces'].find_one({'_id': int(result['id'])}):
+        if get_db()['pieces'].find_one({'_id': int(result['id'])}):
             data.append(result)
         if len(data) == 20:
             break
     return render_template('template.html',
-                            matrix=default_matrix(),
+                            matrix=identity_matrix(),
                             chord_map=CHORDS,
                             track_list=data)
 
@@ -92,7 +75,7 @@ def index():
     The initial page with empty diagram
     '''
     return render_template('template.html',
-                            matrix=default_matrix(),
+                            matrix=identity_matrix(),
                             chord_map=CHORDS,
                             id_list=ids)
 
@@ -104,12 +87,12 @@ def get_track(id):
     if id == "favicon.ico":
         return ''
     id = int(id)
-    matrix, sequence = process_track(id)
+    sequence = process_track(id)
     return render_template('template.html',
                             audio_file=get_audio_path(id),
                             id_list=ids,
                             chord_map=CHORDS,
-                            matrix=matrix,
+                            matrix=identity_matrix(),
                             sequence=sequence)
 
 #@app.route("/tracks/audio/<name>")
