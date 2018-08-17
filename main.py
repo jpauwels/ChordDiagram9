@@ -56,14 +56,15 @@ def search():
     r = requests.get("{}{}".format(base_url, "v3.0/tracks"), params=p)
     print("Jamendo search: HTTP {}".format(r.status_code))
     results = r.json()['results']
-    data = []
-    for result in results:
-        if True:
-        # Turn on to check DB before inserting link
-        #if get_db()['pieces'].find_one({'_id': int(result['id'])}):
-            data.append(result)
-        if len(data) == 20:
-            break
+    result_ids = list(map(lambda x: int(x['id']), results))
+    
+    db_ids = list(get_db()['pieces'].find({"_id": {"$in": result_ids}}, {"_id": 1}).limit(20))
+    db_ids = set(map(lambda x: x['_id'], db_ids))
+    
+    data = list(filter(lambda x: int(x['id']) in db_ids, results))
+
+    print(data)
+
     return render_template('template.html',
                             matrix=identity_matrix(),
                             chord_map=CHORDS,

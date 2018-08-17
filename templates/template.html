@@ -59,13 +59,13 @@
           <div class="row justify-content-center">
             {% if track_list %}
             <div class="col-8 card">
-                    <div class="card-body" style="display: flex; justify-content: space-around; flex-wrap: wrap">
-                        {% for track in track_list %}
-                        <a class="btn btn-primary" href={{url_for('get_track', id=track['id'])}}><span class="font-weight-bold">{{track['name']}}</span><br><span>{{track['artist_name']}}</span></a>
-                        {% endfor %}
-                    </div>
+                <div class="card-body" style="display: flex; justify-content: space-around; flex-wrap: wrap">
+                    {% for track in track_list %}
+                    <a class="btn btn-primary" href={{url_for('get_track', id=track['id'])}}><span class="font-weight-bold">{{track['name']}}</span><br><span>{{track['artist_name']}}</span></a>
+                    {% endfor %}
                 </div>
-                {% endif %}
+            </div>
+            {% endif %}
             </div>
             {% endif %}
             <div class="row">
