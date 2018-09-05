@@ -1,0 +1,13 @@
+08/17/18
+8:30-9:30
+Connect HTML form to new server method
+New server method triggers jamendo API call
+9:30-10:30
+Parse data from jamendo API to create buttons on page
+Clicking button loads chords from database
+12:00-13:00
+Style changes
+Fix chord diagram playalong
+14:00-14:30
+Optimize database query to improve search time from ~7.5s to ~2s
+

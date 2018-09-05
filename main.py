@@ -58,7 +58,7 @@ def search():
     results = r.json()['results']
     result_ids = list(map(lambda x: int(x['id']), results))
     
-    db_ids = list(get_db()['pieces'].find({"_id": {"$in": result_ids}}, {"_id": 1}).limit(20))
+    db_ids = list(get_db()['pieces'].find({"_id": {"$in": result_ids}}, {"_id": 1}).limit(10))
     db_ids = set(map(lambda x: x['_id'], db_ids))
     
     data = list(filter(lambda x: int(x['id']) in db_ids, results))

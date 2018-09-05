@@ -22,7 +22,7 @@
             height: 100%;
             width: 100%;
             margin:0px;
-            background: url(/static/image.jpg) no-repeat center center;
+            background: url(/static/image2.jpg) no-repeat center center;
             background-size: cover;
             background-attachment: fixed;
         }
@@ -48,7 +48,7 @@
             <div class="row justify-content-center">
                 <div class="form-group card">
                 <form class="card-body" action="{{ url_for('search') }}" method="GET">
-                    <h5 class="card-title">Song Search</h5>
+                    <h5 class="card-title">Search</h5>
                     <input type="text" name="search " style="align-content: center">
                     <input type="submit" value="Submit">           
                 </form>
@@ -245,7 +245,7 @@ var svg = null
         var speed = 1000
         // Play all but last
         sequence.map(
-            (x, i, a) => setTimeout(() => {if (i < sequence.length) nextChord(x, a[i+1])},
+            (x, i, a) => setTimeout(() => {if (i < sequence.length&&!document.getElementsByTagName("audio")[0].paused) nextChord(x, a[i+1])},
                                     x["start"]*speed))
         // Play last
         setTimeout(() => nextChord(sequence[sequence.length-1]),
